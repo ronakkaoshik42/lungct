@@ -94,10 +94,15 @@ segment_lung_lr = function(img, lthresh = -300, verbose = TRUE){
       message("# Segmenting Airways: Identifying Airway Location")
     }
     fimg <- air_mask > 2
+    message("# 1")
     mydim = dim(fimg)
+    message("# 2")
     fimg<-as.array(fimg,dim=mydim)
+    message("# 3")
     fimg[round(mydim[1]/4):(round(mydim[1]/4)*3),round(mydim[2]/4):(round(mydim[2]/4)*3),round(mydim[3]/2):mydim[3]] <- 1
+    message("# 4")
     fimg<-makeImage(mydim,fimg)
+    message("# 5")
     air_mask <- maskImage(air_mask,fimg)
 
     if (verbose) {
